@@ -1,3 +1,4 @@
+// Lista de objetos com nome, primeira nota e segunda nota de cada aluno
 const students = [
     {
         name: "João",
@@ -85,47 +86,39 @@ const students = [
 
 ]
 
+//Puxando os objetos dentro de arrays
 let studentsName = []
 let studentsPrimeiraNota = []
 let studentsSegundaNota = []
 
+
+//Para cada elemento dentro de cada objeto buscar e fazer o .push para os arrays criados
 for(let student of students){
     studentsName.push(student.name)
     studentsPrimeiraNota.push(student.PrimeiraNota)
     studentsSegundaNota.push(student.SegundaNota)
 }
 
-function mediaConcurso (notaUm,notaDois){
-    let media = ((notaUm + notaDois) / 2)
-
-    if(media >7){
-        return "Aprovado"
-    }
-    else{
-        return "Reprovado"
-    }
-}
-
+// Função para se ter a média
 function media (notaUm,notaDois){
     let media = ((notaUm + notaDois) / 2)
 
     return media
 }
 
-
+// For para percorrer cada elemento dentro do array junto com um IF para filtrar quem foi APROVADO ou não
 for (let i=0; i<students.length; i++){
-    let resultado = mediaConcurso(studentsPrimeiraNota[i],studentsSegundaNota[i])
     let y = media(studentsPrimeiraNota[i],studentsSegundaNota[i])
 
     if(y>=7){
         alert(`
-        A média do(a) aluno(a) ${studentsName[i]} é: ${y}
-        Parabéns ${studentsName[i]}! Você foi: ${resultado} no concurso
+        A média do(a) aluno(a) ${studentsName[i]} é: ${y.toFixed(2)}
+        Parabéns ${studentsName[i]}! Você foi: aprovado(a) no concurso
         `)
     }
     else{
         alert(`
-        A média do(a) aluno(a) ${studentsName[i]} é: ${y}
+        A média do(a) aluno(a) ${studentsName[i]} é: ${y.toFixed(2)}
         Não foi dessa vez, ${studentsName[i]}! Tente novamente!
         `)
     }
